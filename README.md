@@ -7,7 +7,7 @@ Calculator for cubic function and cubic bezier. Provided with an inverse functio
     require! <[cubic]>
     bezier = new cubic.Bezier [0.2, 0.3, 0.4, 0.5]
     t = Math.random!
-    assert(t = bezier.t(bezier.x(t)));
+    assert t == bezier.t(bezier.x(t))
 
 
 ## LICENSE
