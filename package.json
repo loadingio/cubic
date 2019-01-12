@@ -1,0 +1,23 @@
+{
+  "author": "Kirby Wu",
+  "name": "cubic",
+  "description": "Cubic Function and Cubic Bezier calculator",
+  "version": "0.0.1",
+  "main": "dist/cubic.js",
+  "homepage": "https://github.com/loadingio/cubic",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/loadingio/cubic"
+  },
+  "engines": {
+    "node": ">=0.12.6",
+    "npm": ">=1.2.2"
+  },
+  "devDependencies": {
+    "LiveScript": ">=1.2.0",
+    "browserify": "=16.2.3",
+    "uglify-js": "=3.4.9"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+mkdir -p dist
+echo "build src/index.ls -> dist/cubic.js ..."
+./node_modules/.bin/lsc -cbp src/index.ls > dist/cubic.js
+#echo "bundling cubic.js ..."
+#./node_modules/.bin/browserify dist/cubic.js > dist/cubic.bundle.js
+echo "minifying cubic.js ..."
+./node_modules/.bin/uglifyjs dist/cubic.js > dist/cubic.min.js
+#echo "minifying cubic.bundle.js ..."
+#./node_modules/.bin/uglifyjs dist/cubic.bundle.js > dist/cubic.bundle.min.js
+echo "done."
