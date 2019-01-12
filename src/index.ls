@@ -3,7 +3,7 @@
 # calculate f(x), or finding roots for f(x) = y
 
 Func = (a, b, c, d) -> @ <<< {a, b, c, d}; return @
-Func.prototype = Object.create(Object.prototype) <<< do
+Func.prototype = Object.create(Object.prototype) <<< FuncMembers = do
   calc: (x, a = @a, b = @b, c = @c, d = @d) ->
     return a * (x ** 3) + b * (x ** 2) + c * (x) + d
   root: (y = 0, a = @a, b = @b, c = @c, d = @d) ->
@@ -28,6 +28,8 @@ Func.prototype = Object.create(Object.prototype) <<< do
       x2 = (-b + Math.sqrt(A) * ( Math.cos(theta / 3) + Math.sqrt(3) * Math.sin(theta / 3))) / (3 * a)
       x3 = (-b + Math.sqrt(A) * ( Math.cos(theta / 3) - Math.sqrt(3) * Math.sin(theta / 3))) / (3 * a)
       return [x1, x2, x3]
+
+Func <<< FuncMembers
 
 Func.glsl = """
 float cubic(float x, vec4 p) {
@@ -71,9 +73,11 @@ Bezier = (p) ->
   @eq = new Func coff.0, coff.1, coff.2, coff.3
   @
 
-Bezier.prototype = Object.create(Object.prototype) <<< do
+Bezier.prototype = Object.create(Object.prototype) <<< BezierMembers = do
   x: (t, p = @p) -> 3 * ((1 - t) ** 2) * t * p.0 + 3 * (1 - t) * t * t * p.2 + t * t * t
   y: (t, p = @p) -> 3 * ((1 - t) ** 2) * t * p.1 + 3 * (1 - t) * t * t * p.3 + t * t * t
   t: (x) -> @eq.root(x).0
+
+Bezier <<< BezierMembers
 
 module.exports = {Func, Bezier}
