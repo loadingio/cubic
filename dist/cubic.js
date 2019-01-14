@@ -69,11 +69,16 @@ Bezier.prototype = import$(Object.create(Object.prototype), BezierMembers = {
     return 3 * Math.pow(1 - t, 2) * t * p[1] + 3 * (1 - t) * t * t * p[3] + t * t * t;
   },
   t: function(x, p){
-    if (p) {
-      return Func.root(x, 3 * p[0] - 3 * p[2] + 1, -6 * p[0] + 3 * p[2], 3 * p[0], 0)[0];
-    } else {
-      return this.eq.root(x)[0];
-    }
+    var ret, r;
+    ret = p
+      ? Func.root(x, 3 * p[0] - 3 * p[2] + 1, -6 * p[0] + 3 * p[2], 3 * p[0], 0)
+      : this.eq.root(x);
+    r = ret.filter(function(it){
+      return it >= 0 && it <= 1;
+    })[0];
+    return r != null
+      ? r
+      : ret[0];
   }
 });
 import$(Bezier, BezierMembers);

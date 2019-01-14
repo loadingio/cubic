@@ -77,8 +77,10 @@ Bezier.prototype = Object.create(Object.prototype) <<< BezierMembers = do
   x: (t, p = @p) -> 3 * ((1 - t) ** 2) * t * p.0 + 3 * (1 - t) * t * t * p.2 + t * t * t
   y: (t, p = @p) -> 3 * ((1 - t) ** 2) * t * p.1 + 3 * (1 - t) * t * t * p.3 + t * t * t
   t: (x, p) -> 
-    if p => Func.root(x, ( 3 * p.0 - 3 * p.2 + 1 ), (-6 * p.0 + 3 * p.2 ), ( 3 * p.0 ), 0).0
-    else @eq.root(x).0
+    ret = if p => Func.root(x, ( 3 * p.0 - 3 * p.2 + 1 ), (-6 * p.0 + 3 * p.2 ), ( 3 * p.0 ), 0)
+    else @eq.root(x)
+    r = ret.filter(->it >= 0 and it <= 1).0
+    return if r? => r else ret.0
 
 Bezier <<< BezierMembers
 
