@@ -48,7 +48,7 @@ vec4 cubicRoot(float y, vec4 p) {
     y1 = A * b + 3. * a * (-B + sqrt(D)) * 0.5;
     y2 = A * b + 3. * a * (-B - sqrt(D)) * 0.5;
     return vec4(vec3(-b - (cbrt(y1) + cbrt(y2)) / ( 3. * a)), 1.);
-  } else if(D == 0) { 
+  } else if(D == 0) {
     k = B/A;
     return vec4((-b/a) + k, -k/2., -k/2., 2.);
   } else if(D < 0) {
@@ -76,11 +76,19 @@ Bezier = (p) ->
 Bezier.prototype = Object.create(Object.prototype) <<< BezierMembers = do
   x: (t, p = @p) -> 3 * ((1 - t) ** 2) * t * p.0 + 3 * (1 - t) * t * t * p.2 + t * t * t
   y: (t, p = @p) -> 3 * ((1 - t) ** 2) * t * p.1 + 3 * (1 - t) * t * t * p.3 + t * t * t
-  t: (x, p) -> 
+  t: (x, p, err=0.000001) ->
     ret = if p => Func.root(x, ( 3 * p.0 - 3 * p.2 + 1 ), (-6 * p.0 + 3 * p.2 ), ( 3 * p.0 ), 0)
     else @eq.root(x)
+    # sometimes calculated result are quite close to 0 but slightly small, like 1e-17.
+    # we add an err threshold for fixing this.
+    if err => ret = ret.map -> Math.round( it / err ) * err
     r = ret.filter(->it >= 0 and it <= 1).0
-    return if r? => r else ret.0
+    # if we still can't find a valid solution, then just give the closest one.
+    if !(r?) =>
+      ret = ret.map -> [it, Math.min(Math.abs(it),Math.abs(it - 1))]
+      ret.sort ((a,b) -> a.0 - b.0)
+      return ret.0
+    return r
 
 Bezier <<< BezierMembers
 
