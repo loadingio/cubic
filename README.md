@@ -23,6 +23,15 @@ Equation roots calculation use Sheng Jin Formula which might be inaccurate accor
     root = func.root 0      # root for solving f(x) = 0
 
 
+## Compatibility
+
+cubic use `Math.cbrt` which is not available in IE < 11. You can simply use a polyfill or following code:
+
+```
+    Math.cbrt = -> Math.pow(it, 1/3)
+```
+
+
 ## LICENSE
 
 MIT
