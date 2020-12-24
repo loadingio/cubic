@@ -1,6 +1,6 @@
 # cubic
 
-Calculator for cubic function and cubic bezier. Provided with an inverse function from give X to t, which could be used to calculate Y then.
+Calculator for cubic function and cubic bezier. Provided with an inverse function from given X to t, which could be used to calculate Y then.
 
 Equation roots calculation use Sheng Jin Formula which might be inaccurate according to Kahan; there is an alternative solution here: https://www.npmjs.com/package/cubic-roots , which could be integrated in the future.
 
