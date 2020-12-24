@@ -23,6 +23,12 @@ Equation roots calculation use Sheng Jin Formula which might be inaccurate accor
     root = func.root 0      # root for solving f(x) = 0
 
 
+For a simply `x -> y` bezier calculation:
+
+    b = new cubic.Bezier([....])
+    [0 to 1 by 0.1].map (x) -> y = b.y(bezier.t(x))
+
+
 ## Compatibility
 
 cubic use `Math.cbrt` which is not available in IE < 11. You can simply use a polyfill or following code:
