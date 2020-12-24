@@ -2,7 +2,7 @@
   "author": "zbryikt",
   "name": "@loadingio/cubic",
   "description": "Cubic Function and Cubic Bezier calculator",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "files": [
     "dist/**/*"
   ],
@@ -14,12 +14,11 @@
     "url": "https://github.com/loadingio/cubic"
   },
   "engines": {
-    "node": ">=0.12.6",
-    "npm": ">=1.2.2"
+    "node": ">=10.14.1",
+    "npm": ">=6.4.1"
   },
   "devDependencies": {
-    "LiveScript": ">=1.2.0",
-    "browserify": "=16.2.3",
+    "livescript": ">=1.6.0",
     "uglify-js": "=3.4.9"
   },
   "dependencies": {}

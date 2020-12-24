@@ -92,4 +92,5 @@ Bezier.prototype = Object.create(Object.prototype) <<< BezierMembers = do
 
 Bezier <<< BezierMembers
 
-module.exports = {Func, Bezier}
+if module? => module.exports = {Func, Bezier}
+if window? => window.cubic = {Func, Bezier}
