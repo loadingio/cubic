@@ -92,5 +92,12 @@ Bezier.prototype = Object.create(Object.prototype) <<< BezierMembers = do
 
 Bezier <<< BezierMembers
 
-if module? => module.exports = {Func, Bezier}
-if window? => window.cubic = {Func, Bezier}
+cubic = {
+  func: Func
+  bezier: Bezier
+  Func: Func      # deprecated
+  Bezier: Bezier  # deprecated
+}
+
+if module? => module.exports = cubic
+else if window? => window.cubic = cubic

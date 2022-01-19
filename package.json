@@ -2,11 +2,12 @@
   "author": "zbryikt",
   "name": "@loadingio/cubic",
   "description": "Cubic Function and Cubic Bezier calculator",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "files": [
     "dist/**/*"
   ],
-  "main": "dist/cubic.js",
+  "browser": "dist/index.min.js",
+  "main": "dist/index.min.js",
   "homepage": "https://github.com/loadingio/cubic",
   "license": "MIT",
   "repository": {
@@ -18,8 +19,8 @@
     "npm": ">=6.4.1"
   },
   "devDependencies": {
+    "fedep": "^1.1.0",
     "livescript": ">=1.6.0",
-    "uglify-js": "=3.4.9"
-  },
-  "dependencies": {}
+    "uglify-js": "=3.13.1"
+  }
 }
