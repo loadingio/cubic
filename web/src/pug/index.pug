@@ -1,0 +1,19 @@
+doctype html
+html
+  include @/@loadingio/bootstrap.ext/index.pug
+  include @/ldview/index.pug
+  head
+    +css([
+      {name: "bootstrap", path: "dist/css/bootstrap.min.css"},
+      {name: "@loadingio/bootstrap.ext"}
+    ])
+  body
+    .w-1024.rwd.mx-auto.my-4
+      .rounded.shadow-sm.mx-auto.border(style="width:500px;height:500px")
+        canvas(width="500",height="500")
+    +script([
+      {name: "@loadingio/ldquery"},
+      {name: "@loadingio/cubic", version: "dev"},
+      {name: "ldview"}
+    ])
+    script(type="module"): include:lsc index.ls

@@ -5,4 +5,8 @@ echo "build src/index.ls -> dist/index.js ..."
 ./node_modules/.bin/lsc -cp --no-header src/index.ls > dist/index.js
 echo "minifying index.js ..."
 ./node_modules/.bin/uglifyjs dist/index.js -m -c > dist/index.min.js
+
+rm -rf web/static/assets/lib/@loadingio/cubic
+mkdir -p web/static/assets/lib/@loadingio/cubic
+cp -R dist web/static/assets/lib/@loadingio/cubic/dev
 echo "done."
