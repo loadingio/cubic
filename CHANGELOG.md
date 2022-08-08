@@ -1,5 +1,10 @@
 # Change Logs
 
+## v0.0.4
+
+ - add `x2y()` function for shortand of `y(t(x))`
+
+
 ## v0.0.3
 
  - add `main`, `browser` field in `package.json`

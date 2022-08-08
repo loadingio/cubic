@@ -60,6 +60,10 @@
     return this;
   };
   Bezier.prototype = import$(Object.create(Object.prototype), BezierMembers = {
+    x2y: function(x, p){
+      p == null && (p = this.p);
+      return this.y(this.t(x));
+    },
     x: function(t, p){
       p == null && (p = this.p);
       return 3 * Math.pow(1 - t, 2) * t * p[0] + 3 * (1 - t) * t * t * p[2] + t * t * t;

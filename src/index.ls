@@ -74,6 +74,7 @@ Bezier = (p) ->
   @
 
 Bezier.prototype = Object.create(Object.prototype) <<< BezierMembers = do
+  x2y: (x, p = @p) -> @y @t x
   x: (t, p = @p) -> 3 * ((1 - t) ** 2) * t * p.0 + 3 * (1 - t) * t * t * p.2 + t * t * t
   y: (t, p = @p) -> 3 * ((1 - t) ** 2) * t * p.1 + 3 * (1 - t) * t * t * p.3 + t * t * t
   t: (x, p, err=0.000001) ->
